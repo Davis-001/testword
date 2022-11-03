@@ -1,0 +1,27 @@
+<%= form_with(model: alternative) do |form| %>
+  <% if alternative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alternative.errors.count, "error") %> prohibited this alternative from being saved:</h2>
+
+      <ul>
+        <% alternative.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :enunciado %>
+    <%= form.text_field :enunciado %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correta %>
+    <%= form.check_box :correta %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

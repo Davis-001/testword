@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enunciado: MyString
+  correta: false
+
+two:
+  enunciado: MyString
+  correta: false

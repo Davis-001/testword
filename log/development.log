@@ -1,0 +1,767 @@
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE DATABASE "testword_servico_questoes_development" ENCODING = 'unicode'[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3355432765773925305)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-01 17:58:25.871533"], ["updated_at", "2022-11-01 17:58:25.871533"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3355432765773925305)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3355432765773925305)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3355432765773925305)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.18.0.1 at 2022-11-01 17:59:01 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.2ms | Allocations: 403)
+Completed 200 OK in 13ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 3469)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3355432765773925305)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateQuestos (20221101182146)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "questos" ("id" bigserial primary key, "alternativaCorreta" character varying, "assunto_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182146"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlternativas (20221101182207)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "alternativas" ("id" bigserial primary key, "enunciado" character varying, "correta" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182207"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateResposta (20221101182221)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" bigserial primary key, "alternativa_id" bigint, "prova_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182221"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3355432765773925305)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:34 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.0ms | Allocations: 178)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 715)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:39 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.6ms | Allocations: 8)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 236)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 8)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 234)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:40 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:41 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 8)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 234)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:41 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:41 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/" for 172.18.0.1 at 2022-11-01 18:24:41 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 228)
+
+
+Started GET "/rails/info/yrftrffvtr" for 172.18.0.1 at 2022-11-01 18:31:39 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/rails/info/yrftrffvtr"):
+  
+Started GET "/resposta" for 172.18.0.1 at 2022-11-01 18:32:20 +0000
+Processing by RespostaController#index as HTML
+Completed 500 Internal Server Error in 2ms (Allocations: 2028)
+
+
+  
+NameError (uninitialized constant RespostaController::Respostum):
+  
+app/controllers/resposta_controller.rb:6:in `index'
+Started GET "/alternativas" for 172.18.0.1 at 2022-11-01 18:33:07 +0000
+Processing by AlternativasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternativas/index.html.erb within layouts/application
+  [1m[36mAlternativa Load (0.5ms)[0m  [1m[34mSELECT "alternativas".* FROM "alternativas"[0m
+  ↳ app/views/alternativas/index.html.erb:15
+  Rendered alternativas/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 3662)
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 22143)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 5.2ms | Allocations: 23444)
+
+
+Started GET "/alternativas" for 172.18.0.1 at 2022-11-01 18:34:58 +0000
+Processing by AlternativasController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternativas/index.html.erb within layouts/application
+  [1m[36mAlternativa Load (0.2ms)[0m  [1m[34mSELECT "alternativas".* FROM "alternativas"[0m
+  ↳ app/views/alternativas/index.html.erb:15
+  Rendered alternativas/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 688)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2205)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 2475)
+
+
+Started GET "/questos" for 172.18.0.1 at 2022-11-01 18:35:42 +0000
+Processing by QuestosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questos/index.html.erb within layouts/application
+  [1m[36mQuesto Load (0.5ms)[0m  [1m[34mSELECT "questos".* FROM "questos"[0m
+  ↳ app/views/questos/index.html.erb:15
+  Rendered questos/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 939)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2458)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.5ms | Allocations: 3413)
+
+
+Started GET "/questos/new" for 172.18.0.1 at 2022-11-01 18:35:51 +0000
+Processing by QuestosController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questos/new.html.erb within layouts/application
+  Rendered questos/_form.html.erb (Duration: 8.0ms | Allocations: 4220)
+  Rendered questos/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 4537)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 6054)
+Completed 200 OK in 19ms (Views: 10.3ms | ActiveRecord: 4.6ms | Allocations: 9324)
+
+
+Started GET "/questos" for 172.18.0.1 at 2022-11-01 18:35:55 +0000
+Processing by QuestosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questos/index.html.erb within layouts/application
+  [1m[36mQuesto Load (0.3ms)[0m  [1m[34mSELECT "questos".* FROM "questos"[0m
+  ↳ app/views/questos/index.html.erb:15
+  Rendered questos/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 685)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2201)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 2471)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "testword_servico_questoes_development"[0m
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE DATABASE "testword_servico_questoes_development" ENCODING = 'unicode'[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3355432765773925305)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateQuestos (20221101182146)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "questos" ("id" bigserial primary key, "alternativaCorreta" character varying, "assunto_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182146"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlternativas (20221101182207)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "alternativas" ("id" bigserial primary key, "enunciado" character varying, "correta" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182207"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateResposta (20221101182221)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" bigserial primary key, "alternativa_id" bigint, "prova_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101182221"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateQuestions (20221101185651)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "alternativaCorreta" character varying, "assunto_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101185651"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlternatives (20221101185928)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "alternatives" ("id" bigserial primary key, "enunciado" character varying, "correta" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101185928"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAnswers (20221101190206)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "answers" ("id" bigserial primary key, "alternativa_id" bigint, "prova_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221101190206"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-01 19:02:43.876938"], ["updated_at", "2022-11-01 19:02:43.876938"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3355432765773925305)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/questos" for 172.18.0.1 at 2022-11-01 19:02:52 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questos/index.html.erb within layouts/application
+  [1m[36mQuesto Load (0.6ms)[0m  [1m[34mSELECT "questos".* FROM "questos"[0m
+  ↳ app/views/questos/index.html.erb:15
+  Rendered questos/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 973)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 14499)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.6ms | Allocations: 15766)
+
+
+Started GET "/rails/info/yrftrffvtr" for 172.18.0.1 at 2022-11-01 19:02:59 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/rails/info/yrftrffvtr"):
+  
+Started GET "/answers" for 172.18.0.1 at 2022-11-01 19:03:25 +0000
+Processing by AnswersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering answers/index.html.erb within layouts/application
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers"[0m
+  ↳ app/views/answers/index.html.erb:15
+  Rendered answers/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 957)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2643)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 3611)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:10 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.5ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 3715)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 5415)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 5.1ms | Allocations: 6384)
+
+
+Started GET "/alternatives/new" for 172.18.0.1 at 2022-11-01 19:50:12 +0000
+Processing by AlternativesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/new.html.erb within layouts/application
+  Rendered alternatives/_form.html.erb (Duration: 13.0ms | Allocations: 1856)
+  Rendered alternatives/new.html.erb within layouts/application (Duration: 13.6ms | Allocations: 2173)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 3855)
+Completed 200 OK in 25ms (Views: 15.9ms | ActiveRecord: 5.3ms | Allocations: 6573)
+
+
+Started POST "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:18 +0000
+Processing by AlternativesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "alternative"=>{"enunciado"=>"", "correta"=>"0"}, "commit"=>"Create Alternative"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/alternatives_controller.rb:26:in `create'
+  [1m[36mAlternative Create (0.5ms)[0m  [1m[32mINSERT INTO "alternatives" ("enunciado", "correta", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["enunciado", ""], ["correta", false], ["created_at", "2022-11-01 19:50:18.421002"], ["updated_at", "2022-11-01 19:50:18.421002"]]
+  ↳ app/controllers/alternatives_controller.rb:26:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/alternatives_controller.rb:26:in `create'
+Redirected to http://localhost:3000/alternatives/1
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms | Allocations: 2243)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:18 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 422)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2107)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 3352)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:20 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 825)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2507)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 2777)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:21 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 239)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1921)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 2618)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:24 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 237)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1919)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2617)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:26 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 820)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2513)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 2784)
+
+
+Started GET "/alternatives/1/edit" for 172.18.0.1 at 2022-11-01 19:50:29 +0000
+Processing by AlternativesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/edit.html.erb within layouts/application
+  Rendered alternatives/_form.html.erb (Duration: 1.2ms | Allocations: 1120)
+  Rendered alternatives/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1363)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3045)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 3867)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:34 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 235)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1917)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2615)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:35 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 825)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2507)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 2776)
+
+
+Started GET "/alternatives/1/edit" for 172.18.0.1 at 2022-11-01 19:50:37 +0000
+Processing by AlternativesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.4ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/edit.html.erb within layouts/application
+  Rendered alternatives/_form.html.erb (Duration: 1.4ms | Allocations: 1098)
+  Rendered alternatives/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1216)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2900)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 3597)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:40 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 231)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1913)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 2611)
+
+
+Started GET "/alternatives/1/edit" for 172.18.0.1 at 2022-11-01 19:50:41 +0000
+Processing by AlternativesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/edit.html.erb within layouts/application
+  Rendered alternatives/_form.html.erb (Duration: 1.4ms | Allocations: 1094)
+  Rendered alternatives/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1212)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2893)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 3590)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:42 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 826)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2508)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 2777)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 19:50:43 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 241)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1923)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 2620)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 19:50:45 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 832)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2514)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 2783)
+
+
+Started GET "/rails/info/yrftrffvtr" for 172.18.0.1 at 2022-11-01 20:31:53 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/rails/info/yrftrffvtr"):
+  
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 20:32:07 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.4ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 395)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 9965)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 0.5ms | Allocations: 13844)
+
+
+Started GET "/alternatives/1" for 172.18.0.1 at 2022-11-01 20:35:15 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 389)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2078)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 3478)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 20:35:25 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1123)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2651)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 3046)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 20:35:27 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 834)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2359)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 2629)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 20:35:40 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.4ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 826)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2352)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 2621)
+
+
+Started GET "/alternatives" for 172.18.0.1 at 2022-11-01 20:36:16 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1066)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2755)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 3727)
+
+
+Started GET "/alternatives" for 172.19.0.1 at 2022-11-01 20:37:57 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.6ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 4222)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 14360)
+Completed 200 OK in 25ms (Views: 18.4ms | ActiveRecord: 4.0ms | Allocations: 17129)
+
+
+Started GET "/alternatives" for 172.19.0.1 at 2022-11-01 20:38:16 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1086)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2777)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 3762)
+
+
+Started GET "/alternatives" for 172.19.0.1 at 2022-11-01 20:38:16 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 840)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2367)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 2648)
+
+
+Started GET "/alternatives" for 172.19.0.1 at 2022-11-01 20:38:17 +0000
+Processing by AlternativesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/index.html.erb within layouts/application
+  [1m[36mAlternative Load (0.5ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives"[0m
+  ↳ app/views/alternatives/index.html.erb:15
+  Rendered alternatives/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 843)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2370)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.5ms | Allocations: 2650)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:38:31 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.5ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 405)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2096)
+Completed 200 OK in 10ms (Views: 3.4ms | ActiveRecord: 0.7ms | Allocations: 4748)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:38:55 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 397)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2086)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 3487)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:38:56 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 238)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1763)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 2462)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:07 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.4ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 389)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2078)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 3478)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:08 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 242)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1767)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 2465)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:15 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 397)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2086)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 3488)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:15 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.2ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 248)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1773)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 2471)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:15 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 233)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1758)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 2455)
+
+
+Started GET "/alternatives/1" for 172.19.0.1 at 2022-11-01 20:39:16 +0000
+Processing by AlternativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAlternative Load (0.3ms)[0m  [1m[34mSELECT "alternatives".* FROM "alternatives" WHERE "alternatives"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alternatives_controller.rb:51:in `set_alternative'
+  Rendering layout layouts/application.html.erb
+  Rendering alternatives/show.html.erb within layouts/application
+  Rendered alternatives/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 235)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1760)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 2457)
+
+
+Started GET "/question" for 172.19.0.1 at 2022-11-01 20:39:41 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/question"):
+  
+Started GET "/question" for 172.19.0.1 at 2022-11-01 20:39:49 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/question"):
+  
+Started GET "/questions" for 172.19.0.1 at 2022-11-01 20:39:57 +0000
+Processing by QuestionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questions/index.html.erb within layouts/application
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/views/questions/index.html.erb:15
+  Rendered questions/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 940)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2479)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.5ms | Allocations: 3456)
+
+
+Started GET "/questions/new" for 172.19.0.1 at 2022-11-01 20:40:00 +0000
+Processing by QuestionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering questions/new.html.erb within layouts/application
+  Rendered questions/_form.html.erb (Duration: 2.9ms | Allocations: 2812)
+  Rendered questions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 3128)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4653)
+Completed 200 OK in 13ms (Views: 7.0ms | ActiveRecord: 2.3ms | Allocations: 7227)
+
+
+Started POST "/questions" for 172.19.0.1 at 2022-11-01 20:40:05 +0000
+Processing by QuestionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "question"=>{"alternativaCorreta"=>"a", "assunto_id"=>"a"}, "commit"=>"Create Question"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:27:in `create'
+  [1m[36mQuestion Create (1.6ms)[0m  [1m[32mINSERT INTO "questions" ("alternativaCorreta", "assunto_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["alternativaCorreta", "a"], ["assunto_id", 0], ["created_at", "2022-11-01 20:40:05.393269"], ["updated_at", "2022-11-01 20:40:05.393269"]]
+  ↳ app/controllers/questions_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:27:in `create'
+Redirected to http://localhost:3000/questions/1
+Completed 302 Found in 6ms (ActiveRecord: 2.1ms | Allocations: 2229)
+
+
+Started GET "/questions/1" for 172.19.0.1 at 2022-11-01 20:40:05 +0000
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:52:in `set_question'
+  [1m[36mCACHE Question Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering questions/show.html.erb within layouts/application
+  Rendered questions/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 443)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1971)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3360)
+
+
+Started GET "/questions/1" for 172.19.0.1 at 2022-11-01 20:40:22 +0000
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:52:in `set_question'
+  [1m[36mCACHE Question Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering questions/show.html.erb within layouts/application
+  Rendered questions/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 415)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2104)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 3872)
+
+

@@ -1,0 +1,7 @@
+rails generate scaffold Questoes id:bigint alternativaCorreta:string assunto_id:bigint
+
+rails generate scaffold Alternativas id:bigint texto:string correta:boolean
+
+rails generate scaffold Respostas id:bigint alternativa_id:bigint prova_id:bigint 
+
+app_scaffold()
